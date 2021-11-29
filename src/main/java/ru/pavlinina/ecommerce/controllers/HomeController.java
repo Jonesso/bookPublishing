@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.User;
+import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.CategoryService;
 import ru.pavlinina.ecommerce.services.UserService;
 
@@ -23,8 +24,8 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private CategoryService categoryService;
+    @Autowired
+    private BookService bookService;
 //
 //    @Autowired
 //    private ProductService productService;
@@ -32,12 +33,13 @@ public class HomeController {
 
     /**
      * method for getting shop main page
+     *
      * @param model data model
      * @return shop main page with list of products
      */
     @GetMapping({"index", "/"})
     public String index(Model model) {
-//        model.addAttribute("categoryList", categoryService.listCategory());
+        model.addAttribute("booksList", bookService.listBooks());
 //        model.addAttribute("productList", productService.listProduct());
         return "index";
     }

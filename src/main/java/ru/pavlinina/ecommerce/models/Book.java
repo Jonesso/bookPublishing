@@ -15,7 +15,7 @@ import lombok.Setter;
  * @author Sofia Pavlinina
  */
 @Entity
-@Table(name = "Book")
+@Table(name = "book")
 @Getter
 @Setter
 public class Book {
@@ -25,28 +25,28 @@ public class Book {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "BookURL", length = 70)
+  @Column(name = "book_url", length = 70)
   private String bookURL;
 
-  @Column(name = "Title", nullable = false, length = 100)
+  @Column(name = "title", nullable = false, length = 100)
   private String title;
 
-  @Column(name = "Author", nullable = false, length = 40)
+  @Column(name = "author", nullable = false, length = 40)
   private String author;
 
   @ManyToOne
-  @JoinColumn(name = "ArchiveID")
+  @JoinColumn(name = "archive_id")
   private Archive archiveID;
 
   @ManyToOne
-  @JoinColumn(name = "BookLayoutID")
+  @JoinColumn(name = "book_layout_id")
   private BookLayout bookLayoutID;
 
   @ManyToOne(optional = false)
-  @JoinColumn(name = "BookTextID", nullable = false)
+  @JoinColumn(name = "book_text_id", nullable = false)
   private EditedText bookTextID;
 
-  @Column(name = "AgeLimit", nullable = false)
+  @Column(name = "age_limit", nullable = false)
   private Integer ageLimit;
 
 }

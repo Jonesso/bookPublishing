@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "EditedText")
+@Table(name = "edited_text")
 @Getter
 @Setter
 public class EditedText {
@@ -22,14 +22,14 @@ public class EditedText {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "TextURL", nullable = false, length = 70)
+  @Column(name = "text_url", nullable = false, length = 70)
   private String textURL;
 
-  @Column(name = "Author", nullable = false, length = 40)
+  @Column(name = "author", nullable = false, length = 40)
   private String author;
 
   @ManyToOne(optional = false)
-  @JoinColumn(name = "PublicationRequirementsID", nullable = false)
+  @JoinColumn(name = "publication_requirements_id", nullable = false)
   private PublicationRequirement publicationRequirementsID;
 
 }

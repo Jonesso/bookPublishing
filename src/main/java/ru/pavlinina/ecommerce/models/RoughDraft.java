@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "RoughDraft")
+@Table(name = "rough_draft")
 @Getter
 @Setter
 public class RoughDraft {
@@ -20,15 +20,15 @@ public class RoughDraft {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "DraftTextURL", nullable = false, length = 70)
+  @Column(name = "draft_text_url", nullable = false, length = 70)
   private String draftTextURL;
 
-  @Column(name = "Author", nullable = false, length = 40)
+  @Column(name = "author", nullable = false, length = 40)
   private String author;
 
-  @Column(name = "Title", nullable = false, length = 100)
+  @Column(name = "title", nullable = false, length = 100)
   private String title;
 
-  @Column(name = "Status", nullable = false, length = 30)
+  @Column(name = "status", nullable = false, length = 30)
   private String status;
 }

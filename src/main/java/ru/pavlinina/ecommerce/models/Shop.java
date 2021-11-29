@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Shop")
+@Table(name = "shop")
 @Getter
 @Setter
 public class Shop {
@@ -20,10 +20,10 @@ public class Shop {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "ShopUrl", length = 70)
+  @Column(name = "shop_url", length = 70)
   private String shopUrl;
 
-  @Column(name = "Name", nullable = false, length = 100)
+  @Column(name = "name", nullable = false, length = 100)
   private String name;
 
 }

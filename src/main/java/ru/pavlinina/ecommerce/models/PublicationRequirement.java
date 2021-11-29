@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "PublicationRequirement")
+@Table(name = "publication_requirement")
 @Getter
 @Setter
 public class PublicationRequirement {
@@ -20,7 +20,7 @@ public class PublicationRequirement {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "RequirmentsTextUrl", nullable = false, length = 70)
-  private String requirmentsTextUrl;
+  @Column(name = "requirements_text_url", nullable = false, length = 70)
+  private String requirementsTextUrl;
 
 }

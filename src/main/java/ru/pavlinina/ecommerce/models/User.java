@@ -15,7 +15,7 @@ import java.util.List;
  * @author Sofia Pavlinina
  */
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
