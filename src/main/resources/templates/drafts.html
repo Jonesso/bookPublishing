@@ -17,13 +17,13 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-4" th:each="book : ${booksList}">
+    <div class="col-sm-4" th:each="draft : ${draftsList}">
       <div class="card mt-4">
-        <img src="" class="card-img-top" alt="Book cover">
         <div class="card-body">
-          <h5 th:text="${book.getTitle()}" class="card-title"></h5>
-          <h6 th:text="${book.getAuthor()}" class="card-text"></h6>
-          <p th:text="${book.getAgeLimit()}+'+'" class="card-text"></p>
+          <h5 th:text="${draft.getTitle()}" class="card-title"></h5>
+          <h6 th:text="${draft.getAuthor()}" class="card-text"></h6>
+          <p th:text="${draft.getDraftTextURL()}"></p>
+          <p th:text="${draft.getStatus()}"></p>
           <!--                        <a href="#" th:href="@{'~/profile/addToCart/' + ${product.productId}}" class="btn btn-primary">Add to cart</a>-->
         </div>
       </div>
@@ -32,20 +32,5 @@
 
 </div>
 
-
-<script>
-  function randomInteger(min, max) {
-    // случайное число от min до (max+1)
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-  }
-
-  let images = document.getElementsByTagName('img');
-
-  for (let i = 0; i < images.length; i++) {
-    images[i].src = `https://picsum.photos/200/300?random=${randomInteger(1, 100)}`;
-  }
-
-</script>
 </body>
 </html>

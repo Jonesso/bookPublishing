@@ -4,53 +4,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.services.BookService;
-import ru.pavlinina.ecommerce.services.CategoryService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
+import ru.pavlinina.ecommerce.services.RoughDraftService;
 import ru.pavlinina.ecommerce.services.UserService;
 
 /**
  * shop main page controller
+ *
  * @author Sofia Pavlinina
  */
 @Controller
 @RequestMapping("/")
 public class HomeController {
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    @Autowired
-    private BookService bookService;
+  @Autowired
+  private BookService bookService;
 
-    @Autowired
-    private EditedTextService editedTextService;
-//
-//    @Autowired
-//    private ProductService productService;
+  @Autowired
+  private EditedTextService editedTextService;
+
+  @Autowired
+  private RoughDraftService roughDraftService;
 
 
-    @GetMapping({"index", "/"})
-    public String index(Model model) {
-        model.addAttribute("booksList", bookService.listBooks());
+  @GetMapping({"index", "/"})
+  public String index(Model model) {
+    model.addAttribute("booksList", bookService.listBooks());
 //        model.addAttribute("productList", productService.listProduct());
-        return "index";
-    }
+    return "index";
+  }
 
-    @GetMapping("login")
-    public String login() {
-        return "login";
-    }
+  @GetMapping("login")
+  public String login() {
+    return "login";
+  }
 
-    @GetMapping("signup")
-    public String signup() {
-        return "signup";
-    }
+  @GetMapping("signup")
+  public String signup() {
+    return "signup";
+  }
 
 //    @PostMapping("signup")
 //    public ModelAndView signUp(User user) {
@@ -61,12 +58,17 @@ public class HomeController {
 //        return mv;
 //    }
 
+  @GetMapping("edited-texts")
+  public String editedTexts(Model model) {
+    model.addAttribute("editedTextsList", editedTextService.listEditedTexts());
+    return "edited_texts";
+  }
 
-    @GetMapping("edited-texts")
-    public String allProduct(Model model) {
-        model.addAttribute("editedTextsList", editedTextService.listEditedTexts());
-        return "edited_texts";
-    }
+  @GetMapping("drafts")
+  public String drafts(Model model) {
+    model.addAttribute("draftsList", roughDraftService.listDrafts());
+    return "drafts";
+  }
 
 //    @GetMapping("getProducts/{categoryId}")
 //    public ModelAndView getProductFromCategory(@PathVariable("categoryId")String categoryId) {
@@ -78,9 +80,9 @@ public class HomeController {
 //        return mv;
 //    }
 
-    @GetMapping("error")
-    public String error() {
-        return "error";
-    }
+  @GetMapping("error")
+  public String error() {
+    return "error";
+  }
 
 }
