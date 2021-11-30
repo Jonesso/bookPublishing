@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.CategoryService;
+import ru.pavlinina.ecommerce.services.EditedTextService;
 import ru.pavlinina.ecommerce.services.UserService;
 
 /**
@@ -26,17 +27,14 @@ public class HomeController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private EditedTextService editedTextService;
 //
 //    @Autowired
 //    private ProductService productService;
 
 
-    /**
-     * method for getting shop main page
-     *
-     * @param model data model
-     * @return shop main page with list of products
-     */
     @GetMapping({"index", "/"})
     public String index(Model model) {
         model.addAttribute("booksList", bookService.listBooks());
@@ -44,29 +42,16 @@ public class HomeController {
         return "index";
     }
 
-    /**
-     * method for getting shop login page
-     * @return shop login page with user data form
-     */
     @GetMapping("login")
     public String login() {
         return "login";
     }
 
-    /**
-     * method for getting shop sing up page
-     * @return shop sing up page with user data form
-     */
     @GetMapping("signup")
     public String signup() {
         return "signup";
     }
 
-    /**
-     * method for posting new user data
-     * @param user new entity to save in table
-     * @return shop main page with list of products
-     */
 //    @PostMapping("signup")
 //    public ModelAndView signUp(User user) {
 //        ModelAndView mv = new ModelAndView("/index");
@@ -76,23 +61,13 @@ public class HomeController {
 //        return mv;
 //    }
 
-    /**
-     * method for getting shop page with all products
-     * @param model data model
-     * @return shop page with all products
-     */
-//    @GetMapping("allProduct")
-//    public String allProduct(Model model) {
-//        model.addAttribute("productList", productService.listProduct());
-//        model.addAttribute("categoryList", categoryService.listCategory());
-//        return "index";
-//    }
 
-    /**
-     * method for getting shop page with products of necessary category
-     * @param categoryId ID of necessary category
-     * @return page with products of necessary category
-     */
+    @GetMapping("edited-texts")
+    public String allProduct(Model model) {
+        model.addAttribute("editedTextsList", editedTextService.listEditedTexts());
+        return "edited_texts";
+    }
+
 //    @GetMapping("getProducts/{categoryId}")
 //    public ModelAndView getProductFromCategory(@PathVariable("categoryId")String categoryId) {
 //        ModelAndView mv = new ModelAndView("index");
@@ -103,14 +78,9 @@ public class HomeController {
 //        return mv;
 //    }
 
-    /**
-     * method for getting shop error page
-     * @return shop error page
-     */
     @GetMapping("error")
     public String error() {
         return "error";
     }
-
 
 }
