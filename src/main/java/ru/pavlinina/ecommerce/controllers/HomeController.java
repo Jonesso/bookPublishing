@@ -14,8 +14,6 @@ import ru.pavlinina.ecommerce.services.RoughDraftService;
 import ru.pavlinina.ecommerce.services.UserService;
 
 /**
- * shop main page controller
- *
  * @author Sofia Pavlinina
  */
 @Controller

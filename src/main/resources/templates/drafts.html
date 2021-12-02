@@ -4,6 +4,7 @@
 <head th:insert="fragments.html :: headerfiles"></head>
 <body>
 <header th:insert="fragments.html :: nav"></header>
+
 <div class="container">
 
   <div th:insert="fragments.html :: main-page-nav"></div>
@@ -15,7 +16,8 @@
           <h5 th:text="${draft.getTitle()}" class="card-title"></h5>
           <h6 th:text="${draft.getAuthor()}" class="card-text"></h6>
           <p th:text="${draft.getDraftTextURL()}"></p>
-          <p th:text="${draft.getStatus()}"></p>
+          <p style="font-size: 1.25em;"><span class="badge badge-light badge-pill status"
+                                              th:text="${draft.getStatus()}"></span></p>
           <!--                        <a href="#" th:href="@{'~/profile/addToCart/' + ${product.productId}}" class="btn btn-primary">Add to cart</a>-->
         </div>
       </div>
@@ -24,5 +26,27 @@
 
 </div>
 
+<script>
+  let statuses = document.querySelectorAll('.status');
+
+  for (let i = 0; i < statuses.length; i++) {
+    let status = statuses[i];
+
+    switch (status.innerHTML) {
+      case 'Got':
+        status.style.color = '#4682B4';
+        break;
+      case 'In Progress':
+        status.style.color = '#FFD700';
+        break;
+      case 'Accepted':
+        status.style.color = '#008000';
+        break;
+      case 'Rejected':
+        status.style.color = '#8B0000';
+        break;
+    }
+  }
+</script>
 </body>
 </html>
