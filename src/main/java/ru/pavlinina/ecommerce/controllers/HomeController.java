@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
 import ru.pavlinina.ecommerce.services.RoughDraftService;
@@ -35,7 +38,6 @@ public class HomeController {
   @GetMapping({"index", "/"})
   public String index(Model model) {
     model.addAttribute("booksList", bookService.listBooks());
-//        model.addAttribute("productList", productService.listProduct());
     return "index";
   }
 
@@ -49,14 +51,13 @@ public class HomeController {
     return "signup";
   }
 
-//    @PostMapping("signup")
-//    public ModelAndView signUp(User user) {
-//        ModelAndView mv = new ModelAndView("/index");
-//        userService.save(user);
-//        mv.addObject("productList", productService.listProduct());
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        return mv;
-//    }
+  @PostMapping("signup")
+  public ModelAndView signUp(User user) {
+    ModelAndView mv = new ModelAndView("/index");
+    userService.save(user);
+
+    return mv;
+  }
 
   @GetMapping("edited-texts")
   public String editedTexts(Model model) {
