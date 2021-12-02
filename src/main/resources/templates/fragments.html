@@ -4,43 +4,62 @@
 
 <!-- Fragment #1 : Header files (css and js references) -->
 <head th:fragment="headerfiles">
-    <meta charset="UTF-8">
-    <title>Electronics shop</title>
-    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Electronics shop</title>
+  <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
 </head>
 <body>
-    <!-- Fragment #2 : Navbar -->
-    <div th:fragment="nav">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Книжное агенство</a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <<li class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{/index}"><i class="fa fa-home mr-2"></i>Главная</a>
-                        </li>
-                        <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
-                            <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
-                        </li>
-                        <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="nav-item">
-                            <a class="nav-link" href="#" th:href="@{/manager/index}">Управление</a>
-                        </li>
-                    </ul>
-                    <ul class="nav my-auto mr-4">
-                        <li class="nav-item"><a href="#" class="text-info" th:href="@{/profile/cart-product}"><i class="fas fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0" form-method="post"
-                          th:action="@{/logout}">
-                        <button sec:authorize="isAuthenticated()"
-                                class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Выйти</button>
-                        <button sec:authorize="isAnonymous()" th:href="@{~/login}"
-                                class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Войти</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+<!-- Fragment #2 : Navbar -->
+<div th:fragment="nav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Книжное агенство</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <
+          <li class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/index}"><i class="fa fa-home mr-2"></i>Главная</a>
+          </li>
+          <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
+          </li>
+          <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/manager/index}">Управление</a>
+          </li>
+        </ul>
+        <ul class="nav my-auto mr-4">
+          <li class="nav-item"><a href="#" class="text-info" th:href="@{/profile/cart-product}"><i
+              class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" form-method="post"
+              th:action="@{/logout}">
+          <button sec:authorize="isAuthenticated()"
+                  class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Выйти
+          </button>
+          <button sec:authorize="isAnonymous()" th:href="@{~/login}"
+                  class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Войти
+          </button>
+        </form>
+      </div>
     </div>
+  </nav>
+</div>
+
+<!-- Fragment #3 : Main page nav -->
+<div th:fragment="main-page-nav">
+  <h1 class="display-5">Поступившие работы</h1>
+
+  <div class="d-flex justify-content-start p-2">
+    <!--    <a class="list-group-item mr-2" href="#" th:href="@{/allProduct}">Все документы</a>-->
+    <a class="list-group-item mr-2" href="#" th:href="@{/}">Книги</a>
+    <a class="list-group-item mr-2" href="#" th:href="@{/edited-texts}">Отредактированные тексты</a>
+    <a class="list-group-item mr-2" href="#" th:href="@{/drafts}">Черновики</a>
+    <!--            <a class="list-group-item mr-2"	th:each="category : ${categoryList}"-->
+    <!--               th:text="${category.categoryName}" href="#" th:href="@{'/getProducts/' + ${category.categoryId}}"></a>-->
+  </div>
+</div>
 </body>
 </html>

@@ -5,16 +5,8 @@
 <body>
 <header th:insert="fragments.html :: nav"></header>
 <div class="container">
-  <h1 class="display-5">Поступившие работы</h1>
 
-  <div class="d-flex justify-content-start p-2">
-    <!--    <a class="list-group-item mr-2" href="#" th:href="@{/allProduct}">Все документы</a>-->
-    <a class="list-group-item mr-2" href="#" th:href="@{/}">Книги</a>
-    <a class="list-group-item mr-2" href="#" th:href="@{/edited-texts}">Отредактированные тексты</a>
-    <a class="list-group-item mr-2" href="#" th:href="@{/drafts}">Черновики</a>
-    <!--            <a class="list-group-item mr-2"	th:each="category : ${categoryList}"-->
-    <!--               th:text="${category.categoryName}" href="#" th:href="@{'/getProducts/' + ${category.categoryId}}"></a>-->
-  </div>
+  <div th:insert="fragments.html :: main-page-nav"></div>
 
   <div class="row">
     <div class="col-sm-4" th:each="book : ${booksList}">
