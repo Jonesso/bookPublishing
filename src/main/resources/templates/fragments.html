@@ -19,15 +19,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <
           <li class="nav-item">
             <a class="nav-link" href="#" th:href="@{/index}"><i class="fa fa-home mr-2"></i>Главная</a>
           </li>
-          <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
-          </li>
           <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="nav-item">
             <a class="nav-link" href="#" th:href="@{/manager/index}">Управление</a>
+          </li>
+          <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
           </li>
         </ul>
 
@@ -59,7 +58,7 @@
 
 <!-- Fragment #3 : Main page nav -->
 <div th:fragment="main-page-nav">
-  <h1 class="display-5">Поступившие работы</h1>
+  <h1 class="display-5 my-2">Поступившие работы</h1>
 
   <div class="d-flex justify-content-start p-2">
     <!--    <a class="list-group-item mr-2" href="#" th:href="@{/allProduct}">Все документы</a>-->

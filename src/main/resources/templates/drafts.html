@@ -13,11 +13,14 @@
     <div class="col-sm-4" th:each="draft : ${draftsList}">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 th:text="${draft.getTitle()}" class="card-title"></h5>
+          <h5 th:text="${draft.getTitle()}" th:href="@{'~/drafts/' + ${draft.getId()}}"
+              class="card-title"></h5>
           <h6 th:text="${draft.getAuthor()}" class="card-text"></h6>
           <p th:text="${draft.getDraftTextURL()}"></p>
-          <p style="font-size: 1.25em;"><span class="badge badge-light badge-pill status"
-                                              th:text="${draft.getStatus()}"></span></p>
+          <p style="font-size: 1.25em;">
+            <span class="badge badge-light badge-pill status" th:text="${draft.getStatus()}">
+            </span>
+          </p>
           <!--                        <a href="#" th:href="@{'~/profile/addToCart/' + ${product.productId}}" class="btn btn-primary">Add to cart</a>-->
         </div>
       </div>

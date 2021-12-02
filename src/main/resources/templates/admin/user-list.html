@@ -9,36 +9,32 @@
       <div class="row my-5">
           <div class="list-group list-group-flush col-5">
               <a class="list-group-item list-group-item-action"
-                 href="#" th:href="@{/manager/category-form}">Manage Category</a>
+                 href="#" th:href="@{/admin/add-user}">Добавить пользователя</a>
               <a class="list-group-item list-group-item-action"
-                 href="#" th:href="@{/manager/product-form}">Manage Product</a>
-              <a class="list-group-item list-group-item-action"
-                 href="#" th:href="@{/admin/add-user}">Add Admin/Manager</a>
-              <a class="list-group-item list-group-item-action"
-                 href="#" th:href="@{/admin/user-list}">User/Manager/Admin List</a>
+                 href="#" th:href="@{/admin/user-list}">Список пользователей</a>
           </div>
 
           <table class="table my-5">
               <thead>
               <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Имя</th>
+                  <th scope="col">Фамилия</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Роль</th>
+                  <th scope="col">Действие</th>
               </tr>
               </thead>
               <tbody>
               <tr th:each="user : ${userList}">
-                  <th scope="row" th:text="${user.userId}"></th>
-                  <td th:text="${user.firstName}"></td>
-                  <td th:text="${user.lastName}"></td>
-                  <td th:text="${user.email}"></td>
-                  <td th:text="${user.role}"></td>
+                  <th scope="row" th:text="${user.getUserId()}"></th>
+                  <td th:text="${user.getFirstName()}"></td>
+                  <td th:text="${user.getLastName()}"></td>
+                  <td th:text="${user.getEmail()}"></td>
+                  <td th:text="${user.getRole()}"></td>
                   <td>
-                      <a href="#" th:href="@{'/admin/delete-User/'+ ${user.userId}}"
-                         class="btn btn-danger">Delete</a>
+                      <a href="#" th:href="@{'/admin/delete-user/'+ ${user.getUserId()}}"
+                         class="btn btn-danger">Удалить</a>
                   </td>
               </tr>
               </tbody>
