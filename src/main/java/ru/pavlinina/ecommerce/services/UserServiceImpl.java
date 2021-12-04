@@ -1,16 +1,14 @@
 package ru.pavlinina.ecommerce.services;
 
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.repositories.UserRepository;
 
-import javax.transaction.Transactional;
-import java.util.List;
-
 /**
- * implementation of {@link ru.pavlinina.ecommerce.services.ProductService}
  * @author Sofia Pavlinina
  */
 @Service

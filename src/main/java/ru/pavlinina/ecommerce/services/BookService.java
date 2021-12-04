@@ -1,6 +1,7 @@
 package ru.pavlinina.ecommerce.services;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pavlinina.ecommerce.models.Book;
@@ -18,4 +19,21 @@ public class BookService {
   public List<Book> listBooks() {
     return bookRepository.findAll();
   }
+
+  public Optional<Book> getBookById(Long bookId) {
+    return bookRepository.findById(bookId);
+  }
+
+  public void addBook(Book book) {
+    bookRepository.save(book);
+  }
+
+  public void deleteBook(Long bookId) {
+    bookRepository.deleteById(bookId);
+  }
+
+  // TODO
+//  public List<Book> findByAuthor(Long authorId) {
+//    return bookRepository.findByAuthor_AuthorId(authorId);
+//  }
 }

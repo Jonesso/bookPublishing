@@ -3,8 +3,11 @@ package ru.pavlinina.ecommerce.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import ru.pavlinina.ecommerce.models.Book;
 import ru.pavlinina.ecommerce.services.BookService;
 
 
@@ -56,7 +59,7 @@ public class ManagerController {
 //    }
 //
 //
-//    //	Product--------------------------------------------------
+  //	Book --------------------------------------------------
 
   @GetMapping("book-form")
   public ModelAndView listProduct() {
@@ -64,33 +67,28 @@ public class ManagerController {
     mv.addObject("booksList", bookService.listBooks());
     return mv;
   }
-//
-//    @PostMapping("add-product")
-//    public ModelAndView addProduct(Product product, @RequestParam("file") MultipartFile file) {
-//        ModelAndView mv = new ModelAndView("manager/product-form");
-//        System.out.println("file: " + file.getOriginalFilename());
-//        String filePath = fileUploadService.upload(file);
-//        product.setImage(filePath);
-//        System.out.println(product.getImage());
-//        productService.addProduct(product);
-//        mv.addObject("productList", productService.listProduct());
-//        return mv;
-//    }
-//
-//    @GetMapping("delete-Product/{productId}")
-//    public ModelAndView deleteProduct(@PathVariable("productId")String productId) {
-//        ModelAndView mv = new ModelAndView("manager/product-form");
-//        productService.deleteProduct(Long.parseLong(productId));
-//        mv.addObject("productList", productService.listProduct());
-//        return mv;
-//    }
-//
-//    @GetMapping("updateProduct/{productId}")
-//    public ModelAndView updateProduct(@PathVariable("productId")String productId) {
-//        ModelAndView mv = new ModelAndView("manager/updateProduct");
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        mv.addObject("Product", productService.getProductById(Long.parseLong(productId)).get());
-//        return mv;
-//    }
+
+  @PostMapping("add-book")
+  public ModelAndView addBook(Book book) {
+    ModelAndView mv = new ModelAndView("manager/book-form");
+    bookService.addBook(book);
+    mv.addObject("booksList", bookService.listBooks());
+    return mv;
+  }
+
+  @GetMapping("delete-book/{bookId}")
+  public ModelAndView deleteBook(@PathVariable("bookId") String bookId) {
+    ModelAndView mv = new ModelAndView("manager/book-form");
+    bookService.deleteBook(Long.parseLong(bookId));
+    mv.addObject("booksList", bookService.listBooks());
+    return mv;
+  }
+
+  @GetMapping("update-book/{bookId}")
+  public ModelAndView updateBook(@PathVariable("bookId") String bookId) {
+    ModelAndView mv = new ModelAndView("manager/update-book");
+    mv.addObject("Book", bookService.getBookById(Long.parseLong(bookId)).get());
+    return mv;
+  }
 
 }

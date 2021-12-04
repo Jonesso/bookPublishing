@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.services.UserService;
 
 /**
- * administrator controller
  * @author Sofia Pavlinina
  */
 @Controller

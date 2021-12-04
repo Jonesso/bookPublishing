@@ -20,7 +20,7 @@ public class EditedText {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Integer id;
+  private Long id;
 
   @Column(name = "text_url", nullable = false, length = 70)
   private String textURL;

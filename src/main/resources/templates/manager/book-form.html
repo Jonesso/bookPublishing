@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+>
 <head th:insert="fragments.html :: headerfiles">
 </head>
 <body>
@@ -36,11 +36,11 @@
       <td th:text="${book.getBookURL()}"></td>
       <td>
         <a href="#"
-           th:href="@{'/manager/updateProduct/'+ ${book.getId()}}"
+           th:href="@{'/manager/update-book/'+ ${book.getId()}}"
            class="btn btn-info my-2">Обновить</a>
         <br>
         <a href="#"
-           th:href="@{'/manager/delete-Product/'+ ${book.getId()}}"
+           th:href="@{'/manager/delete-book/'+ ${book.getId()}}"
            class="btn btn-danger">Удалить</a>
       </td>
     </tr>
@@ -53,23 +53,24 @@
       style="width: 600px; margin-left: auto; margin-right: auto; margin-top: 24px; padding: 24px;">
     <div class="card">
       <div class="card-block" style="padding: 24px;">
-        <form th:action="@{/manager/add-product}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/manager/add-book}" method="post" enctype="multipart/form-data">
           <fieldset>
+            <!-- FIXME: ID книги начинается с 1-->
             <div class="form-group">
-              <label for="bookName">Название</label>
-              <input type="text" class="form-control" id="bookName" name="bookName"
+              <label for="title">Название</label>
+              <input type="text" class="form-control" id="title" name="title"
                      placeholder="Моя Книга">
             </div>
 
             <div class="form-group">
-              <label for="bookAuthor">Автор</label>
-              <input type="text" class="form-control" id="bookAuthor" name="bookAuthor"
+              <label for="author">Автор</label>
+              <input type="text" class="form-control" id="author" name="author"
                      placeholder="Иванов И.И.">
             </div>
 
             <div class="form-group">
-              <label for="bookAgeLimit">Возрастное ограничение (цифрой)</label>
-              <input type="number" class="form-control" id="bookAgeLimit" name="bookAgeLimit"
+              <label for="ageLimit">Возрастное ограничение (цифрой)</label>
+              <input type="number" class="form-control" id="ageLimit" name="ageLimit"
                      placeholder="16">
             </div>
 
@@ -77,6 +78,25 @@
               <label for="bookURL">Ссылка</label>
               <input type="text" class="form-control" id="bookURL" name="bookURL"
                      placeholder="https://...">
+            </div>
+
+            <!-- TODO: выбор из селекта, а не ввод ID -->
+            <div class="bookTextID">
+              <label for="bookTextID">ID текста книги - см. "Отредактированные тексты"</label>
+              <input type="number" class="form-control" id="bookTextID" name="bookTextID"
+                     placeholder="10">
+            </div>
+
+            <div class="archiveID">
+              <label for="archiveID">ID архива (необязательно) - см. "Архивы"</label>
+              <input type="number" class="form-control" id="archiveID" name="archiveID"
+                     placeholder="5">
+            </div>
+
+            <div class="bookLayoutID">
+              <label for="bookLayoutID">ID разметки книги (необязательно) - см. "Разметка"</label>
+              <input type="number" class="form-control" id="bookLayoutID" name="bookLayoutID"
+                     placeholder="31">
             </div>
 
             <div class="form-actions" style="margin-top: 12px;">

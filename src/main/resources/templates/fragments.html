@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<!-- Fragment #1 : Header files (css and js references) -->
+<!-- Fragment #1 : Header files (css references) -->
 <head th:fragment="headerfiles">
   <meta charset="UTF-8">
   <title>Книжное агенство</title>
@@ -18,23 +18,18 @@
       <a class="navbar-brand" href="#">Книжное агенство</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#" th:href="@{/index}"><i class="fa fa-home mr-2"></i>Главная</a>
           </li>
           <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="nav-item">
-            <!-- TODO: переименовать в "Работы" (?) -->
-            <a class="nav-link" href="#" th:href="@{/manager/index}">Управление</a>
+            <a class="nav-link" href="#" th:href="@{/manager/index}">Работы</a>
           </li>
           <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
             <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
           </li>
         </ul>
-
-        <!--        <ul class="nav my-auto mr-4">-->
-        <!--          <li class="nav-item"><a href="#" class="text-info" th:href="@{/profile/cart-product}"><i-->
-        <!--              class="fas fa-shopping-cart"></i></a></li>-->
-        <!--        </ul>-->
 
         <form class="form-inline my-2 my-lg-0" form-method="get"
               th:action="@{/signup}">

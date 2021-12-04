@@ -18,7 +18,7 @@ public class RoughDraft {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Integer id;
+  private Long id;
 
   @Column(name = "draft_text_url", nullable = false, length = 70)
   private String draftTextURL;

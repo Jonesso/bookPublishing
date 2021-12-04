@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+
+<div class="container">
+  <div
+      style="width: 600px; margin-left: auto; margin-right: auto; margin-top: 24px; padding: 24px;">
+    <div class="card">
+      <div class="card-block" style="padding: 24px;">
+        <form th:action="@{/manager/add-book}" method="post" enctype="multipart/form-data">
+          <fieldset>
+            <input type="hidden" name="id" th:value="${Book.getId()}">
+
+            <input type="hidden" name="archiveID" th:value="${Book.getArchiveID().getId()}">
+            <input type="hidden" name="bookLayoutID" th:value="${Book.getBookLayoutID().getId()}">
+            <input type="hidden" name="bookTextID" th:value="${Book.getBookTextID().getId()}">
+
+            <div class="form-group">
+              <label for="title">Название</label>
+              <input type="text" class="form-control" id="title" name="title"
+                     th:value="${Book.getTitle()}">
+            </div>
+
+            <div class="form-group">
+              <label for="author">Автор</label>
+              <input type="text" class="form-control" id="author" name="author"
+                     th:value="${Book.getAuthor()}">
+            </div>
+
+            <div class="form-group">
+              <label for="ageLimit">Возрастное ограничение (цифрой)</label>
+              <input type="number" class="form-control" id="ageLimit" name="ageLimit"
+                     th:value="${Book.getAgeLimit()}">
+            </div>
+
+            <div class="form-group">
+              <label for="bookURL">Ссылка</label>
+              <input type="text" class="form-control" id="bookURL" name="bookURL"
+                     th:value="${Book.getBookURL()}">
+            </div>
+
+            <div class="form-actions" style="margin-top: 12px;">
+              <button type="submit" class="btn btn-success">Обновить</button>
+            </div>
+          </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
