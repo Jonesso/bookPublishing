@@ -8,6 +8,6 @@ import ru.pavlinina.ecommerce.models.Shop;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface ShopRepository extends JpaRepository<Shop, Long> {
+public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
 }

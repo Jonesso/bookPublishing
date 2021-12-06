@@ -8,6 +8,6 @@ import ru.pavlinina.ecommerce.models.BookLayout;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface BookLayoutRepository extends JpaRepository<BookLayout, Long> {
+public interface BookLayoutRepository extends JpaRepository<BookLayout, Integer> {
 
 }

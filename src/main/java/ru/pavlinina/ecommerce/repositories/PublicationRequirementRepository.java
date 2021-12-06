@@ -9,6 +9,6 @@ import ru.pavlinina.ecommerce.models.PublicationRequirement;
  */
 @Repository
 public interface PublicationRequirementRepository extends
-    JpaRepository<PublicationRequirement, Long> {
+    JpaRepository<PublicationRequirement, Integer> {
 
 }

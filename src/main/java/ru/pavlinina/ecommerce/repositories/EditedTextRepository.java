@@ -8,6 +8,6 @@ import ru.pavlinina.ecommerce.models.EditedText;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface EditedTextRepository extends JpaRepository<EditedText, Long> {
+public interface EditedTextRepository extends JpaRepository<EditedText, Integer> {
 
 }

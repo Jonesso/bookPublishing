@@ -8,6 +8,6 @@ import ru.pavlinina.ecommerce.models.RoughDraft;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface RoughDraftRepository extends JpaRepository<RoughDraft, Long> {
+public interface RoughDraftRepository extends JpaRepository<RoughDraft, Integer> {
 
 }

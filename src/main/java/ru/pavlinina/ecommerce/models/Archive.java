@@ -18,7 +18,7 @@ public class Archive {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Long id;
+  private Integer id;
 
   @Column(name = "address", nullable = false, length = 100)
   private String address;

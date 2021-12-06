@@ -8,6 +8,7 @@ import ru.pavlinina.ecommerce.models.User;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+  User findByEmail(String email);
 }

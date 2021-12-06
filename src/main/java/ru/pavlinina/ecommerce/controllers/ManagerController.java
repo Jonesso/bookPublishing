@@ -79,7 +79,7 @@ public class ManagerController {
   @GetMapping("delete-book/{bookId}")
   public ModelAndView deleteBook(@PathVariable("bookId") String bookId) {
     ModelAndView mv = new ModelAndView("manager/book-form");
-    bookService.deleteBook(Long.parseLong(bookId));
+    bookService.deleteBook(Integer.parseInt(bookId));
     mv.addObject("booksList", bookService.listBooks());
     return mv;
   }
@@ -87,7 +87,7 @@ public class ManagerController {
   @GetMapping("update-book/{bookId}")
   public ModelAndView updateBook(@PathVariable("bookId") String bookId) {
     ModelAndView mv = new ModelAndView("manager/update-book");
-    mv.addObject("Book", bookService.getBookById(Long.parseLong(bookId)).get());
+    mv.addObject("Book", bookService.getBookById(Integer.parseInt(bookId)).get());
     return mv;
   }
 

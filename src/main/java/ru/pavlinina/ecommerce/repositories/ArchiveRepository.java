@@ -8,6 +8,6 @@ import ru.pavlinina.ecommerce.models.Archive;
  * @author Sofia Pavlinina
  */
 @Repository
-public interface ArchiveRepository extends JpaRepository<Archive, Long> {
+public interface ArchiveRepository extends JpaRepository<Archive, Integer> {
 
 }

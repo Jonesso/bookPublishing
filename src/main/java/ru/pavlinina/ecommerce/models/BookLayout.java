@@ -20,7 +20,7 @@ public class BookLayout {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Long id;
+  private Integer id;
 
   @Column(name = "book_name", nullable = false, length = 100)
   private String bookName;

@@ -23,7 +23,7 @@ public class Book {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Long id;
+  private Integer id;
 
   @Column(name = "book_url", length = 70)
   private String bookURL;

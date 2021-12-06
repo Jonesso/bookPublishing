@@ -1,43 +1,50 @@
 package ru.pavlinina.ecommerce.services;
 
-import ru.pavlinina.ecommerce.models.User;
-
 import java.util.List;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import ru.pavlinina.ecommerce.models.User;
+import ru.pavlinina.ecommerce.repositories.UserRepository;
 
 /**
- * service for operating with  User table entities
  * @author Sofia Pavlinina
  */
-public interface UserService {
+@Service
+@Transactional
+public class UserService {
 
-    /**
-     * method for getting User table entity by email
-     * @param email - string of user's email
-     * @return necessary entity
-     */
-    public User findByEmail(String email);
+    @Autowired
+    private UserRepository userRepository;
 
-    /**
-     * method for adding new entity to User table
-     * @param user new entity to save in User table
-     */
-    public void save(User user);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    /**
-     * method for updating User table entity's data
-     * @param user entity with updated data to change the old one
-     */
-    public void update(User user);
 
-    /**
-     * method for returning all users from table
-     * @return list of all entities from User table
-     */
-    public List<User> findAllUser();
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-    /**
-     *  method for removing entity from User table
-     * @param userId id of entity to delete
-     */
-    public void deleteUser(long userId);
+    public void save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
+    public void update(User user) {
+//        List<Product> productlist1 = user.getProductList();
+//        List<Product> productlist = (userRepository.findByEmail(user.getEmail())).getProductList();
+//        productlist1.addAll(productlist);
+//        user.setProductList(productlist1);
+
+        userRepository.save(user);
+    }
+
+    public List<User> findAllUser() {
+        return userRepository.findAll();
+    }
+
+    public void deleteUser(int userId) {
+        userRepository.deleteById(userId);
+    }
 }

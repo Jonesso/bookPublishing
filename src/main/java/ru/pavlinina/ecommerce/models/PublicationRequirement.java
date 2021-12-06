@@ -18,7 +18,7 @@ public class PublicationRequirement {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Long id;
+  private Integer id;
 
   @Column(name = "requirements_text_url", nullable = false, length = 70)
   private String requirementsTextUrl;
