@@ -1,6 +1,7 @@
 package ru.pavlinina.ecommerce.services;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pavlinina.ecommerce.models.EditedText;
@@ -17,5 +18,17 @@ public class EditedTextService {
 
   public List<EditedText> listEditedTexts() {
     return editedTextRepository.findAll();
+  }
+
+  public Optional<EditedText> getEditedTextById(Integer editedTextId) {
+    return editedTextRepository.findById(editedTextId);
+  }
+
+  public void addEditedText(EditedText editedText) {
+    editedTextRepository.save(editedText);
+  }
+
+  public void deleteEditedText(Integer editedTextId) {
+    editedTextRepository.deleteById(editedTextId);
   }
 }

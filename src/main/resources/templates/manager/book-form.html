@@ -57,7 +57,6 @@
       <div class="card-block" style="padding: 24px;">
         <form th:action="@{/manager/add-book}" method="post" enctype="multipart/form-data">
           <fieldset>
-            <!-- FIXME: ID книги начинается с 1-->
             <div class="form-group">
               <label for="title">Название</label>
               <input type="text" class="form-control" id="title" name="title"
@@ -83,19 +82,19 @@
             </div>
 
             <!-- TODO: выбор из селекта, а не ввод ID -->
-            <div class="bookTextID">
+            <div class="form-group">
               <label for="bookTextID">ID текста книги - см. "Отредактированные тексты"</label>
               <input type="number" class="form-control" id="bookTextID" name="bookTextID"
                      placeholder="10">
             </div>
 
-            <div class="archiveID">
+            <div class="form-group">
               <label for="archiveID">ID архива (необязательно) - см. "Архивы"</label>
               <input type="number" class="form-control" id="archiveID" name="archiveID"
                      placeholder="5">
             </div>
 
-            <div class="bookLayoutID">
+            <div class="form-group">
               <label for="bookLayoutID">ID разметки книги (необязательно) - см. "Разметка"</label>
               <input type="number" class="form-control" id="bookLayoutID" name="bookLayoutID"
                      placeholder="31">
