@@ -32,8 +32,15 @@ public class BookService {
     bookRepository.deleteById(bookId);
   }
 
-  // TODO
-//  public List<Book> findByAuthor(Long authorId) {
-//    return bookRepository.findByAuthor_AuthorId(authorId);
-//  }
+  public List<Book> findByAuthor(String author) {
+    return bookRepository.findByAuthor(author);
+  }
+
+  public List<Book> findByTitle(String title) {
+    return bookRepository.findByTitle(title);
+  }
+
+  public List<Book> findByAgeLimit(int ageLimit) {
+    return bookRepository.findByAgeLimit(ageLimit);
+  }
 }

@@ -8,6 +8,60 @@
 
   <div th:insert="fragments.html :: main-page-nav"></div>
 
+  <div class="d-flex justify-content-between p-2">
+    <form th:action="@{/search-books-by-author}" method="get" enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Автор</span>
+          </div>
+          <input type="text" class="form-control" name="author" placeholder="Иванов И.И."
+                 aria-label="Default"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-info my-2">Результаты</button>
+        </div>
+      </div>
+    </form>
+
+    <form th:action="@{/search-books-by-title}" method="get" enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Название</span>
+          </div>
+          <input type="text" class="form-control" name="title" placeholder="Книга"
+                 aria-label="Default"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-info my-2">Результаты</button>
+        </div>
+      </div>
+    </form>
+
+    <form th:action="@{/search-books-by-age-limit}" method="get" enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+                  id="inputGroup-sizing-default">Возрастное ограничение</span>
+          </div>
+          <input type="number" class="form-control" name="ageLimit" placeholder="12"
+                 aria-label="Default"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-info my-2">Результаты</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <div class="row">
     <div class="col-sm-4" th:each="book : ${booksList}">
       <div class="card mt-4">

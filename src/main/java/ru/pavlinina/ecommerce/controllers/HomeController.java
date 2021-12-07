@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.services.BookService;
@@ -67,6 +68,25 @@ public class HomeController {
   public String drafts(Model model) {
     model.addAttribute("draftsList", roughDraftService.listDrafts());
     return "drafts";
+  }
+
+  @GetMapping("search-books-by-author")
+  public String searchBooksByAuthor(@RequestParam(name = "author") String author, Model model) {
+    model.addAttribute("booksList", bookService.findByAuthor(author));
+    return "index";
+  }
+
+  @GetMapping("search-books-by-title")
+  public String searchBooksByTitle(@RequestParam(name = "title") String title, Model model) {
+    model.addAttribute("booksList", bookService.findByTitle(title));
+    return "index";
+  }
+
+  @GetMapping("search-books-by-age-limit")
+  public String searchBooksByAgeLimit(@RequestParam(name = "ageLimit") String ageLimit,
+      Model model) {
+    model.addAttribute("booksList", bookService.findByAgeLimit(Integer.parseInt(ageLimit)));
+    return "index";
   }
 
 //    @GetMapping("getProducts/{categoryId}")
