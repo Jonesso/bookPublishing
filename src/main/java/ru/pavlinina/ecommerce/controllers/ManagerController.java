@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.Book;
 import ru.pavlinina.ecommerce.models.EditedText;
+import ru.pavlinina.ecommerce.models.RoughDraft;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
+import ru.pavlinina.ecommerce.services.RoughDraftService;
 
 
 /**
@@ -26,6 +28,9 @@ public class ManagerController {
   @Autowired
   private EditedTextService editedTextService;
 
+  @Autowired
+  private RoughDraftService roughDraftService;
+
   @GetMapping("index")
   public String index() {
     return "manager/index";
@@ -33,37 +38,36 @@ public class ManagerController {
 
   //	Rough Draft --------------------------------------------------
 
-//    @GetMapping("category-form")
-//    public ModelAndView listCategory() {
-//        ModelAndView mv = new ModelAndView("manager/category-form");
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        return mv;
-//    }
-//
-//    @PostMapping("add-category")
-//    public ModelAndView addCategory(Category category) {
-//        ModelAndView mv = new ModelAndView("manager/category-form");
-//        categoryService.addCategory(category);
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        return mv;
-//    }
-//
-//    @GetMapping("delete-Category/{categoryId}")
-//    public ModelAndView deleteCategory(@PathVariable("categoryId")String categoryId) {
-//        ModelAndView mv = new ModelAndView("manager/category-form");
-//        categoryService.deleteCategory(Long.parseLong(categoryId));
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        return mv;
-//    }
-//
-//    @GetMapping("updateCategory/{categoryId}")
-//    public ModelAndView updateCategory(@PathVariable("categoryId")String categoryId) {
-//        ModelAndView mv = new ModelAndView("manager/updateCategory");
-//        mv.addObject("Category", categoryService.getCategory(Long.parseLong(categoryId)).get());
-//        return mv;
-//    }
-//
-//
+  @GetMapping("draft-form")
+  public ModelAndView listDrafts() {
+    ModelAndView mv = new ModelAndView("manager/draft-form");
+    mv.addObject("draftsList", roughDraftService.listDrafts());
+    return mv;
+  }
+
+  @PostMapping("add-draft")
+  public ModelAndView addDraft(RoughDraft roughDraft) {
+    ModelAndView mv = new ModelAndView("manager/draft-form");
+    roughDraftService.addDraft(roughDraft);
+    mv.addObject("draftsList", roughDraftService.listDrafts());
+    return mv;
+  }
+
+  @GetMapping("delete-draft/{draftId}")
+  public ModelAndView deleteCategory(@PathVariable("draftId") String draftId) {
+    ModelAndView mv = new ModelAndView("manager/draft-form");
+    roughDraftService.deleteDraft(Integer.parseInt(draftId));
+    mv.addObject("draftsList", roughDraftService.listDrafts());
+    return mv;
+  }
+
+  @GetMapping("update-draft/{draftId}")
+  public ModelAndView updateCategory(@PathVariable("draftId") String draftId) {
+    ModelAndView mv = new ModelAndView("manager/update-draft");
+    mv.addObject("Draft", roughDraftService.getDraftById(Integer.parseInt(draftId)).get());
+    return mv;
+  }
+
   //	Edited text --------------------------------------------------
 
   @GetMapping("edited-text-form")

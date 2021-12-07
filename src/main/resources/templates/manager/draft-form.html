@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="list-group list-group-flush col-5">
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/draft-form}">Список черновиков</a>
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/edited-text-form}">Список отредактированных работ</a>
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/book-form}">Список книг</a>
+    </div>
+  </div>
+
+  <table class="table my-5">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Название</th>
+      <th scope="col">Автор</th>
+      <th scope="col" class="text-center">Статус</th>
+      <th scope="col" class="text-center">Ссылка</th>
+      <th scope="col" class="text-center">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="draft : ${draftsList}">
+      <th scope="row" th:text="${draft.getId()}"></th>
+      <td th:text="${draft.getTitle()}"></td>
+      <td th:text="${draft.getAuthor()}"></td>
+      <td th:text="${draft.getStatus()}"></td>
+      <td th:text="${draft.getDraftTextURL()}"></td>
+      <td>
+        <a href="#"
+           th:href="@{'/manager/update-draft/'+ ${draft.getId()}}"
+           class="btn btn-info my-2">Обновить</a>
+        <br>
+        <a href="#"
+           th:href="@{'/manager/delete-draft/'+ ${draft.getId()}}"
+           class="btn btn-danger">Удалить</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2 class="text-center">Добавить книгу</h2>
+
+  <div
+      style="width: 600px; margin-left: auto; margin-right: auto; margin-top: 24px; padding: 24px;">
+    <div class="card">
+      <div class="card-block" style="padding: 24px;">
+        <form th:action="@{/manager/add-draft}" method="post" enctype="multipart/form-data">
+          <fieldset>
+            <div class="form-group">
+              <label for="title">Название</label>
+              <input type="text" class="form-control" id="title" name="title"
+                     placeholder="Моя Книга">
+            </div>
+
+            <div class="form-group">
+              <label for="author">Автор</label>
+              <input type="text" class="form-control" id="author" name="author"
+                     placeholder="Иванов И.И.">
+            </div>
+
+            <div class="form-group">
+              <label for="status">Статус</label>
+              <select class="custom-select" id="status" name="status">
+                <!--                <option selected>Выберите статус</option>-->
+                <option>Получен</option>
+                <option>В процессе</option>
+                <option>Принят</option>
+                <option>Отклонен</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="draftTextURL">Ссылка</label>
+              <input type="text" class="form-control" id="draftTextURL" name="draftTextURL"
+                     placeholder="https://...">
+            </div>
+
+            <div class="form-actions" style="margin-top: 12px;">
+              <button type="submit" class="btn btn-success">Добавить</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
