@@ -10,9 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.Book;
 import ru.pavlinina.ecommerce.models.EditedText;
 import ru.pavlinina.ecommerce.models.RoughDraft;
+import ru.pavlinina.ecommerce.services.ArchiveService;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
 import ru.pavlinina.ecommerce.services.RoughDraftService;
+import ru.pavlinina.ecommerce.services.ShopService;
 
 
 /**
@@ -31,9 +33,20 @@ public class ManagerController {
   @Autowired
   private RoughDraftService roughDraftService;
 
+  @Autowired
+  private ShopService shopService;
+
+  @Autowired
+  private ArchiveService archiveService;
+
   @GetMapping("index")
   public String index() {
     return "manager/index";
+  }
+
+  @GetMapping("other")
+  public String other() {
+    return "manager/other";
   }
 
   //	Rough Draft --------------------------------------------------
@@ -134,4 +147,21 @@ public class ManagerController {
     return mv;
   }
 
+  //	Shop --------------------------------------------------
+
+  @GetMapping("shop-form")
+  public ModelAndView listShops() {
+    ModelAndView mv = new ModelAndView("manager/shop-form");
+    mv.addObject("shopsList", shopService.listShops());
+    return mv;
+  }
+
+  //	Archive --------------------------------------------------
+
+  @GetMapping("archive-form")
+  public ModelAndView listArchives() {
+    ModelAndView mv = new ModelAndView("manager/archive-form");
+    mv.addObject("archivesList", archiveService.listArchives());
+    return mv;
+  }
 }

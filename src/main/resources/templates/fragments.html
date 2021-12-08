@@ -29,6 +29,9 @@
           <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
             <a class="nav-link" href="#" th:href="@{/admin/index}">Пользователи</a>
           </li>
+          <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/manager/other}">Прочее</a>
+          </li>
         </ul>
 
         <form class="form-inline my-2 my-lg-0" form-method="get"
