@@ -31,4 +31,16 @@ public class RoughDraftService {
   public void deleteDraft(Integer draftId) {
     roughDraftRepository.deleteById(draftId);
   }
+
+  public List<RoughDraft> findByStatus(String status) {
+    return roughDraftRepository.findByStatus(status);
+  }
+
+  public List<RoughDraft> findByAuthor(String author) {
+    return roughDraftRepository.findByAuthor(author);
+  }
+
+  public List<RoughDraft> findByTitle(String title) {
+    return roughDraftRepository.findByTitle(title);
+  }
 }

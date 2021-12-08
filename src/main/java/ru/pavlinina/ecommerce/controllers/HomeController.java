@@ -96,6 +96,27 @@ public class HomeController {
     return "edited_texts";
   }
 
+  @GetMapping("search-drafts-by-status")
+  public String searchDraftsByStatus(@RequestParam(name = "status") String status,
+      Model model) {
+    model.addAttribute("draftsList", roughDraftService.findByStatus(status));
+    return "drafts";
+  }
+
+  @GetMapping("search-drafts-by-author")
+  public String searchDraftsByAuthor(@RequestParam(name = "author") String author,
+      Model model) {
+    model.addAttribute("draftsList", roughDraftService.findByAuthor(author));
+    return "drafts";
+  }
+
+  @GetMapping("search-drafts-by-title")
+  public String searchDraftsByTitle(@RequestParam(name = "title") String title,
+      Model model) {
+    model.addAttribute("draftsList", roughDraftService.findByTitle(title));
+    return "drafts";
+  }
+
   @GetMapping("error")
   public String error() {
     return "error";
