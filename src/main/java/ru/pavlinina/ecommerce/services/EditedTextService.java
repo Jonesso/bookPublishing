@@ -31,4 +31,8 @@ public class EditedTextService {
   public void deleteEditedText(Integer editedTextId) {
     editedTextRepository.deleteById(editedTextId);
   }
+
+  public List<EditedText> findByAuthor(String author) {
+    return editedTextRepository.findByAuthor(author);
+  }
 }

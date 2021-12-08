@@ -89,15 +89,12 @@ public class HomeController {
     return "index";
   }
 
-//    @GetMapping("getProducts/{categoryId}")
-//    public ModelAndView getProductFromCategory(@PathVariable("categoryId")String categoryId) {
-//        ModelAndView mv = new ModelAndView("index");
-//        long categoryLongId = Long.parseLong(categoryId);
-//        System.out.println(categoryLongId);
-//        mv.addObject("productList", productService.findByCategory(categoryLongId));
-//        mv.addObject("categoryList", categoryService.listCategory());
-//        return mv;
-//    }
+  @GetMapping("search-edited-texts-by-author")
+  public String searchEditedTextsByAuthor(@RequestParam(name = "author") String author,
+      Model model) {
+    model.addAttribute("editedTextsList", editedTextService.findByAuthor(author));
+    return "edited_texts";
+  }
 
   @GetMapping("error")
   public String error() {
