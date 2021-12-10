@@ -11,6 +11,7 @@ import ru.pavlinina.ecommerce.models.Book;
 import ru.pavlinina.ecommerce.models.EditedText;
 import ru.pavlinina.ecommerce.models.RoughDraft;
 import ru.pavlinina.ecommerce.services.ArchiveService;
+import ru.pavlinina.ecommerce.services.BookLayoutService;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
 import ru.pavlinina.ecommerce.services.PublicationRequirementService;
@@ -42,6 +43,9 @@ public class ManagerController {
 
   @Autowired
   private PublicationRequirementService publicationRequirementService;
+
+  @Autowired
+  private BookLayoutService bookLayoutService;
 
   @GetMapping("index")
   public String index() {
@@ -175,6 +179,14 @@ public class ManagerController {
   public ModelAndView listPublicationRequirements() {
     ModelAndView mv = new ModelAndView("manager/requirements-form");
     mv.addObject("requirementsList", publicationRequirementService.listRequirements());
+    return mv;
+  }
+  //	Book layout --------------------------------------------------
+
+  @GetMapping("layout-form")
+  public ModelAndView listBookLayouts() {
+    ModelAndView mv = new ModelAndView("manager/layout-form");
+    mv.addObject("layoutsList", bookLayoutService.listLayouts());
     return mv;
   }
 }

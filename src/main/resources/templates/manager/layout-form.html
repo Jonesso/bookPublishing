@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+
+<div class="container">
+  <div class="row">
+    <div class="list-group list-group-flush col-5 my-3">
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/shop-form}">Магазины</a>
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/archive-form}">Архивы</a>
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/requirements-form}">Требования к публикации</a>
+      <a class="list-group-item list-group-item-action"
+         href="#" th:href="@{/manager/layout-form}">Макеты</a>
+    </div>
+  </div>
+
+  <table class="table my-5">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Название книги</th>
+      <th scope="col">Ссылка</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="layout : ${layoutsList}">
+      <th scope="row" th:text="${layout.getId()}"></th>
+      <td th:text="${layout.getBookName()}"></td>
+      <td th:text="${layout.getLayoutURL()}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
