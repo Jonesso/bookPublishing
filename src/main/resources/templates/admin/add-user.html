@@ -8,7 +8,7 @@
 
   <div class="container">
     <div class="list-group list-group-flush col-5 my-5">
-      <a class="list-group-item list-group-item-action"
+      <a class="list-group-item list-group-item-action font-weight-bold"
          href="#" th:href="@{/admin/add-user}">Добавить пользователя</a>
       <a class="list-group-item list-group-item-action"
          href="#" th:href="@{/admin/user-list}">Список пользователей</a>
@@ -50,8 +50,11 @@
 
               <div class="form-group">
                 <label for="role">Роль</label>
-                <input type="text" class="form-control" id="role" name="role"
-                       placeholder="ADMIN / MANAGER / USER">
+                <select class="custom-select" id="role" name="role">
+                  <option>USER</option>
+                  <option>MANAGER</option>
+                  <option>ADMIN</option>
+                </select>
               </div>
 
               <div class="form-actions" style="margin-top: 12px;">
