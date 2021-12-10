@@ -11,9 +11,9 @@ import ru.pavlinina.ecommerce.models.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-  List<Book> findByAuthor(String author);
+  List<Book> findByAuthorContaining(String author);
 
-  List<Book> findByTitle(String title);
+  List<Book> findByTitleContaining(String title);
 
   List<Book> findByAgeLimit(int ageLimit);
 }

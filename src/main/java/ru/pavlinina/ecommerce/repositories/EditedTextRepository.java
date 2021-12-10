@@ -11,5 +11,5 @@ import ru.pavlinina.ecommerce.models.EditedText;
 @Repository
 public interface EditedTextRepository extends JpaRepository<EditedText, Integer> {
 
-  List<EditedText> findByAuthor(String author);
+  List<EditedText> findByAuthorContaining(String author);
 }

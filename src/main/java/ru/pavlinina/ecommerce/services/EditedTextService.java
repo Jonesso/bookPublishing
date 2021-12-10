@@ -33,6 +33,6 @@ public class EditedTextService {
   }
 
   public List<EditedText> findByAuthor(String author) {
-    return editedTextRepository.findByAuthor(author);
+    return editedTextRepository.findByAuthorContaining(author);
   }
 }

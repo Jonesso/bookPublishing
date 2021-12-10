@@ -37,10 +37,10 @@ public class RoughDraftService {
   }
 
   public List<RoughDraft> findByAuthor(String author) {
-    return roughDraftRepository.findByAuthor(author);
+    return roughDraftRepository.findByAuthorContaining(author);
   }
 
   public List<RoughDraft> findByTitle(String title) {
-    return roughDraftRepository.findByTitle(title);
+    return roughDraftRepository.findByTitleContaining(title);
   }
 }

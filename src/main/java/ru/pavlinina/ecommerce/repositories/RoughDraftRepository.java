@@ -13,7 +13,7 @@ public interface RoughDraftRepository extends JpaRepository<RoughDraft, Integer>
 
   List<RoughDraft> findByStatus(String status);
 
-  List<RoughDraft> findByAuthor(String author);
+  List<RoughDraft> findByAuthorContaining(String author);
 
-  List<RoughDraft> findByTitle(String title);
+  List<RoughDraft> findByTitleContaining(String title);
 }

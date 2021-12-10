@@ -33,11 +33,11 @@ public class BookService {
   }
 
   public List<Book> findByAuthor(String author) {
-    return bookRepository.findByAuthor(author);
+    return bookRepository.findByAuthorContaining(author);
   }
 
   public List<Book> findByTitle(String title) {
-    return bookRepository.findByTitle(title);
+    return bookRepository.findByTitleContaining(title);
   }
 
   public List<Book> findByAgeLimit(int ageLimit) {
