@@ -13,6 +13,7 @@ import ru.pavlinina.ecommerce.models.RoughDraft;
 import ru.pavlinina.ecommerce.services.ArchiveService;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
+import ru.pavlinina.ecommerce.services.PublicationRequirementService;
 import ru.pavlinina.ecommerce.services.RoughDraftService;
 import ru.pavlinina.ecommerce.services.ShopService;
 
@@ -38,6 +39,9 @@ public class ManagerController {
 
   @Autowired
   private ArchiveService archiveService;
+
+  @Autowired
+  private PublicationRequirementService publicationRequirementService;
 
   @GetMapping("index")
   public String index() {
@@ -162,6 +166,15 @@ public class ManagerController {
   public ModelAndView listArchives() {
     ModelAndView mv = new ModelAndView("manager/archive-form");
     mv.addObject("archivesList", archiveService.listArchives());
+    return mv;
+  }
+
+  //	Requirements --------------------------------------------------
+
+  @GetMapping("requirements-form")
+  public ModelAndView listPublicationRequirements() {
+    ModelAndView mv = new ModelAndView("manager/requirements-form");
+    mv.addObject("requirementsList", publicationRequirementService.listRequirements());
     return mv;
   }
 }
