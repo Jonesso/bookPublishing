@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import ru.pavlinina.ecommerce.models.User;
 import ru.pavlinina.ecommerce.services.BookService;
 import ru.pavlinina.ecommerce.services.EditedTextService;
@@ -51,11 +50,9 @@ public class HomeController {
   }
 
   @PostMapping("signup")
-  public ModelAndView signUp(User user) {
-    ModelAndView mv = new ModelAndView("/index");
+  public String signUp(User user) {
     userService.save(user);
-
-    return mv;
+    return "user-create-success";
   }
 
   @GetMapping("edited-texts")
